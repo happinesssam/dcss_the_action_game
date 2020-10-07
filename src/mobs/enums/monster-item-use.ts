@@ -1,0 +1,7 @@
+export enum MonsterItemUse
+{
+    MONUSE_NOTHING,
+    MONUSE_OPEN_DOORS,
+    MONUSE_STARTING_EQUIPMENT,
+    MONUSE_WEAPONS_ARMOUR,
+}

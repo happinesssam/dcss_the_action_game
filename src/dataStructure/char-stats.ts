@@ -1,0 +1,23 @@
+export interface CharStats{
+    str:number;
+    int:number;
+    dex:number;
+    hp:number;
+    maxHp:number;
+    hpRegen:number;
+    mp:number;
+    maxMp:number;
+    mpRegen:number;
+    ac:number;
+    mr:number;
+    evasion:number;
+    shielding:number;
+    rFire:number;
+    rCold:number;
+    rPois:number;
+    rElec:number;
+    rCorr:number;
+    stealth:number;
+    seeInvis:boolean;
+    spirit:boolean;
+}
