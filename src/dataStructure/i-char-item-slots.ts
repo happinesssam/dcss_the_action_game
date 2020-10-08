@@ -1,6 +1,6 @@
-import Item from "../model/item";
+import Item from "../items/item";
 
-export interface CharItemSlots{
+export interface ICharItemSlots{
      mainHand?:Item;
      offHand?:Item;
      head?:Item;

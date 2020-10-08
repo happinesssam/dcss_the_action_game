@@ -1,4 +1,4 @@
-export interface CharStats{
+export interface ICharStats{
     str:number;
     int:number;
     dex:number;
