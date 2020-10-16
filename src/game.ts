@@ -1,4 +1,8 @@
 import 'phaser';
+import BootScene from './scenes/boot-scene';
+import GameScene from './scenes/game-scene';
+import MenuScene from './scenes/menu-scene';
+import PreloadScene from './scenes/preload-scene';
 
 export default class Demo extends Phaser.Scene
 {
@@ -36,12 +40,12 @@ export default class Demo extends Phaser.Scene
     }
 }
 
-const config = {
+const config:Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
     backgroundColor: '#125555',
     width: 800,
     height: 600,
-    scene: Demo
+    scene: [BootScene,PreloadScene, MenuScene, GameScene]
 };
 
 const game = new Phaser.Game(config);

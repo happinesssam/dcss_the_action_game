@@ -1,0 +1,43 @@
+export class SceneNames{
+    public static readonly BOOT_SCENE:string = "BOOT_SCENE";
+    public static readonly PRELOAD_SCENE:string = "PRELOAD_SCENE";
+    public static readonly MAIN_MENU_SCENE:string = "MAIN_MENU_SCENE";
+    public static readonly GAME_SCENE:string = "GAME_SCENE";
+}
+export class AssetNames{
+    public static readonly DUNGEON_TILES:string = "dungeonTiles";
+}
+export class BranchNames{
+    public static readonly DUNGEON:string = "dungeon";
+    public static readonly DEPTHS:string = "depths";
+    public static readonly SWAMP:string = "swamp";
+    public static readonly SNAKE:string = "snake";
+    public static readonly SPIDER:string = "spider";
+    public static readonly SHOALS:string = "shoals";
+    public static readonly LAIR:string = "lair";
+    public static readonly HELL:string = "hell";
+    public static readonly CRYPT:string = "crypt";
+    public static readonly VAULTS:string = "vaults";
+    public static readonly ZOT:string = "zot";
+    public static readonly PANDEMONIUM:string = "pandemonium";
+    public static readonly ABYSS:string = "abyss";
+    public static readonly ORC:string = "orc";
+    public static readonly ELF:string = "elf";
+    public static readonly COCYTUS:string = "cocytus";
+    public static readonly DIS:string = "dis";
+    public static readonly GEHENNA:string = "gehenna";
+    public static readonly TARTARUS:string = "tartarus";
+}
+export class FeatureTypes{
+    public static readonly ALTARS:string = "altars";
+    public static readonly DOORS:string = "doors";
+    public static readonly FLOOR:string = "floor";
+    public static readonly GRASS:string = "floor/grass";
+    public static readonly GATEWAYS:string = "gateways";
+    public static readonly STATUES:string = "statues";
+    public static readonly TRAPS:string = "traps";
+    public static readonly TREES:string = "trees";
+    public static readonly VAULTS:string = "vaults";
+    public static readonly WALL:string = "wall";
+    public static readonly WATER:string = "water";
+}

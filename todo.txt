@@ -1,0 +1,9 @@
+List of things to do
+
+- Get a level built - just floor tiles with walls. But make it a level state.
+- Get it so a basic player sprite is spawned there and can move around
+- Scroll around (map is bigger than screen)
+- Some data structure tieing player data to the char running around
+- Add some mobs, look to pulling in data from DCSS data
+- More complex character sprites
+- Think about ui
