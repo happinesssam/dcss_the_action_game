@@ -1,4 +1,4 @@
-import Entity from "../model/entity";
+import Entity from "../../global/model/entity";
 
 export default class Item extends Entity{
     public type:string;

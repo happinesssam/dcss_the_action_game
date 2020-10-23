@@ -8,6 +8,7 @@ export class AssetNames{
     public static readonly DUNGEON_TILES:string = "dungeonTiles";
 }
 export class BranchNames{
+    public static readonly ENTRANCE:string = "entrance";
     public static readonly DUNGEON:string = "dungeon";
     public static readonly DEPTHS:string = "depths";
     public static readonly SWAMP:string = "swamp";
@@ -15,6 +16,8 @@ export class BranchNames{
     public static readonly SPIDER:string = "spider";
     public static readonly SHOALS:string = "shoals";
     public static readonly LAIR:string = "lair";
+    public static readonly SLIME_PITS:string = "slimePits";
+    public static readonly TEMPLE:string = "temple";
     public static readonly HELL:string = "hell";
     public static readonly CRYPT:string = "crypt";
     public static readonly VAULTS:string = "vaults";

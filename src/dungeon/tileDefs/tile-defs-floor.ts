@@ -1,8 +1,18 @@
-import { FloorType, IFloorTile } from "../dataStructure/tile-def-interfaces";
+import { FloorType, IFloorTile } from "../model/tile-def-interfaces";
 
 export class TileDefsFloor{
     public static ACIDIC:string = "acidic";
     public static BLACK_COBALT:string = "blackCobalt";
+    public static BOG_GREEN:string = "bog_green";
+    public static CAGE:string = "cage";
+    public static COBBLE_BLOOD:string = "cobble_blood";
+    public static CRYPT:string = "crypt";
+    public static CRYSTAL:string = "crystal_floor";
+    public static DEMONIC_RED:string = "demonic_red";
+    public static DIRT:string = "dirt";
+    public static ENDLESS_SALT:string = "endless_salt";
+    public static ETCHED:string = "etched";
+    public static NERVES:string = "nerves";
 
 
     public static floorDefs:IFloorTile[] = [
@@ -13,34 +23,34 @@ export class TileDefsFloor{
             id:TileDefsFloor.BLACK_COBALT, texture:"black_cobalt", variants:12, floorType:FloorType.WALKABLE, variantBase:1, variant2Digit:true
         },
         {
-            id:"bog_green", texture:"bog_green", variants:4, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.BOG_GREEN, texture:"bog_green", variants:4, floorType:FloorType.WALKABLE, variantBase:0
         },
         {//seems to be the red one
-            id:"cage", texture:"cage", variants:6, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.CAGE, texture:"cage", variants:6, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
-            id:"cobble_blood", texture:"cobble_blood", variants:12, floorType:FloorType.WALKABLE, variantBase:1
+            id:TileDefsFloor.COBBLE_BLOOD, texture:"cobble_blood", variants:12, floorType:FloorType.WALKABLE, variantBase:1
         },
         {//need to work out how to do domino
-            id:"crypt", texture:"crypt", variants:12, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.CRYPT, texture:"crypt", variants:12, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
-            id:"crystal_floor", texture:"crystal_floor", variants:6, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.CRYSTAL, texture:"crystal_floor", variants:6, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
-            id:"demonic_red", texture:"demonic_red", variants:9, floorType:FloorType.WALKABLE, variantBase:1
+            id:TileDefsFloor.DEMONIC_RED, texture:"demonic_red", variants:9, floorType:FloorType.WALKABLE, variantBase:1
         },
         {//todo dirt has full + compass directions
-            id:"dirt", texture:"dirt", variants:3, floorType:FloorType.WALKABLE, variantBase:0, hasBorders:true
+            id:TileDefsFloor.DIRT, texture:"dirt", variants:3, floorType:FloorType.WALKABLE, variantBase:0, hasBorders:true
         },
         {
-            id:"endless_salt", texture:"endless_salt", variants:4, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.ENDLESS_SALT, texture:"endless_salt", variants:4, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
-            id:"etched", texture:"etched", variants:6, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.ETCHED, texture:"etched", variants:6, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
-            id:"nerves", texture:"floor_nerves", variants:7, floorType:FloorType.WALKABLE, variantBase:0
+            id:TileDefsFloor.NERVES, texture:"floor_nerves", variants:7, floorType:FloorType.WALKABLE, variantBase:0
         },
         {
             id:"vines", texture:"floor_vines", variants:7, floorType:FloorType.WALKABLE, variantBase:0

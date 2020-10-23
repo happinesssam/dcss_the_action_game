@@ -1,5 +1,5 @@
 export interface IBranchInfo{
-    name:string;
+    id:string;
     level:number;
-    
+    levels:number;
 }
