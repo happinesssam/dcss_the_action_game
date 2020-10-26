@@ -1,6 +1,7 @@
-import { GameCreator } from "../engine/game-creator";
+import { GameCreator } from "../engine/setup/game-creator";
 import { SceneNames } from "../global/names";
-import GameState from "../model/game-state";
+import GameState from "../global/model/game-state";
+import { GameInfo } from "../global/GameInfo";
 
 export default class MenuScene extends Phaser.Scene{
     constructor(){
@@ -12,6 +13,7 @@ export default class MenuScene extends Phaser.Scene{
     }
 
     protected startNewGame():void{
-        let gameState:GameState = GameCreator.getGameState();
+        GameInfo.getInstance().gameState = GameCreator.getGameState();
+        this.scene.start(SceneNames.GAME_SCENE);
     }
 }

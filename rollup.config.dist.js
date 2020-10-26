@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 import typescript from 'rollup-plugin-typescript2';
+import webWorkerLoader from 'rollup-plugin-web-worker-loader';
 
 export default {
 
@@ -59,7 +60,8 @@ export default {
         //  See https://www.npmjs.com/package/rollup-plugin-uglify for config options
         uglify({
             mangle: false
-        })
+        }),
+        webWorkerLoader(/* configuration */)
 
     ]
 };

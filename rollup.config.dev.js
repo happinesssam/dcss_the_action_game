@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import typescript from 'rollup-plugin-typescript2';
+import webWorkerLoader from 'rollup-plugin-web-worker-loader';
 
 export default {
 
@@ -37,7 +38,7 @@ export default {
 
         //  Parse our .ts source files
         resolve({
-            extensions: [ '.ts', '.tsx' ]
+            extensions: [ '.js','.ts', '.tsx' ]
         }),
 
         //  We need to convert the Phaser 3 CJS modules into a format Rollup can use:
@@ -65,7 +66,8 @@ export default {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
-        })
+        }),
+        webWorkerLoader(/* configuration */)
 
     ]
 };
