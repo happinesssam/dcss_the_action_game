@@ -22,15 +22,19 @@ export class DungeonGenerator{
 
 
     //initially just spawn a box with some stairs.
-    public getDungeonLevel(levelShell:ILevelShell):LevelState{
+    public getDungeonLevel(levelShell:ILevelShell, callback:(level:LevelState)=>void):LevelState{
         let level:LevelState;
 
         const dungeonGenerators = new DungeonGenWorker();
 
         dungeonGenerators.postMessage({type: 'init', args: 'web worker'});
 
-        dungeonGenerators.postMessage({type: 'exec', func:'createLevel', args: levelShell});
+        dungeonGenerators.postMessage({type: 'exec', func:'createLevel', args: {levelShell:levelShell, callback:callback} as IDungeonGenArgs});
 
         return null;
     }
+}
+export interface IDungeonGenArgs{
+    levelShell:ILevelShell;
+    callback:(level:LevelState)=>void;
 }

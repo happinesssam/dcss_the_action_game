@@ -27,7 +27,7 @@ export default class GameScene extends Phaser.Scene{
         if(!dungeonLevel){
             this.getNewLevel(gameState);
         }else{
-
+            this.buildLevel(dungeonLevel);
         }
     }
 
@@ -43,6 +43,19 @@ export default class GameScene extends Phaser.Scene{
             }
         }
         
-        DungeonGenerator.getInstance().getDungeonLevel(levelShell);
+        DungeonGenerator.getInstance().getDungeonLevel(levelShell, this.newLevelGenerated.bind(this));
+    }
+
+    protected newLevelGenerated(dungeonLevel:LevelState):void{
+        //new level done!
+        //remove pop up and start level
+
+        GameInfo.getInstance().gameState.levels.set(dungeonLevel.id, dungeonLevel);
+
+        this.buildLevel(dungeonLevel);
+    }
+
+    protected buildLevel(dungeonLevel:LevelState):void{
+        
     }
 }

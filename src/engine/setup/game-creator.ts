@@ -1,7 +1,7 @@
 import { Player } from "../../actors/model/player";
 import { Branches } from "../../dungeon/branches";
 import { IBranchInfo } from "../../dungeon/model/i-branch-info";
-import { ILevelShell } from "../../dungeon/model/i-level-shell";
+import { ILevelShell, IStairsShell } from "../../dungeon/model/i-level-shell";
 import { BranchNames } from "../../global/names";
 import { MathsUtil } from "../../global/utils/math-utils";
 import GameState from "../../global/model/game-state";
@@ -25,6 +25,8 @@ export class GameCreator{
         const templeLevel:number = MathsUtil.getNumberSliding(0.3, 2, 9, randomGen);
         const lairLevel:number = MathsUtil.pickFromWeigths([8,9,10,11], [3,4,5,2], randomGen);
         const vaultsLevel:number = MathsUtil.pickFromWeigths([13,14], [3,5], randomGen);
+        const entranceStairs:IStairsShell = {id:BranchNames.ENTRANCE, linkStairs:"string", linkLevel:BranchNames.ENTRANCE,
+            isUp:false}
         
        
         let dungeon:IBranchInfo = Branches.branches.get(BranchNames.DUNGEON);
@@ -35,25 +37,41 @@ export class GameCreator{
 
             if(depth==templeLevel){
                 let temple:ILevelShell = GameCreator.getShell(BranchNames.TEMPLE, 1, randomGen.integer());
-                levelShell.linksTo.push(temple.id);
+                GameCreator.linkLevels(temple, levelShell, 1);
                 levels.set(temple.id, temple);
             }
 
             if(depth==lairLevel){
                 GameCreator.getLair(levels, randomGen, levelShell);
             }
-
             if(lastLevel){
-                lastLevel.linksTo.push(levelShell.id);
-                levelShell.linksTo.push(lastLevel.id);
+                GameCreator.linkLevels(lastLevel, levelShell);
             }else{
                 levelShell.linksTo.push(BranchNames.ENTRANCE);
+                levelShell.stairs.push(entranceStairs);
             }
             lastLevel = levelShell;
             levels.set(levelShell.id, levelShell);
         }
-console.log(levels);
         return levels;
+    }
+
+    /**
+     * Adds the stairs to connect 2 levels
+     * @param level0 
+     * @param level1 
+     * @param numStairs 
+     */
+    protected static linkLevels(level0:ILevelShell, level1:ILevelShell, numStairs:number = 3):void{
+        for(let i:number = 0;i<numStairs;i++){
+            let stairsId0:string = level0.id + "_" + level1.id + "_" + i;
+            let stairsId1:string = level1.id + "_" + level0.id + "_" + i;
+
+            level0.stairs.push({id:stairsId0, linkLevel:level1.id, linkStairs:stairsId1});
+            level1.stairs.push({id:stairsId1, linkLevel:level0.id, linkStairs:stairsId0});
+        }
+        level0.linksTo.push(level1.id);
+        level1.linksTo.push(level0.id);
     }
 
     protected static getLair(levels:Map<string, ILevelShell>, randomGen:Phaser.Math.RandomDataGenerator, entrance:ILevelShell):void{
@@ -79,11 +97,9 @@ console.log(levels);
             }
 
             if(lastLevel){
-                lastLevel.linksTo.push(levelShell.id);
-                levelShell.linksTo.push(lastLevel.id);
+                GameCreator.linkLevels(lastLevel, levelShell);
             }else{
-                entrance.linksTo.push(levelShell.id);
-                levelShell.linksTo.push(entrance.id);
+                GameCreator.linkLevels(entrance, levelShell, 1);
             }
             lastLevel = levelShell;
             levels.set(levelShell.id, levelShell);
@@ -98,11 +114,9 @@ console.log(levels);
             let levelShell:ILevelShell = GameCreator.getShell(lairBranch, depth, randomGen.integer());
 
             if(lastLevel){
-                lastLevel.linksTo.push(levelShell.id);
-                levelShell.linksTo.push(lastLevel.id);
+                GameCreator.linkLevels(lastLevel, levelShell);
             }else{
-                entrance.linksTo.push(levelShell.id);
-                levelShell.linksTo.push(entrance.id);
+                GameCreator.linkLevels(entrance, levelShell);
             }
             if(depth==lairBranchInfo.levels){
                 levelShell.hasRune = true;
@@ -113,7 +127,8 @@ console.log(levels);
     }
 
     protected static getShell(branch:string, depth:number, seed:number):ILevelShell{
-        let levelShell:ILevelShell = {id:branch + depth, branch:branch, depth:depth, linksTo:[], forceThemes:[], seed:seed};
+        let levelShell:ILevelShell = {id:branch + depth, branch:branch, depth:depth, linksTo:[], forceThemes:[],
+             seed:seed, stairs:[]};
 
         return levelShell;
     }
