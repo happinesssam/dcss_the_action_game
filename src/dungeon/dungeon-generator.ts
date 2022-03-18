@@ -1,6 +1,6 @@
 // @ts-ignore
 import DungeonGenWorker from "web-worker:./dungeonGenerators/dungeon-gen-worker.ts";
-import { ILevelGenerator } from "./dungeonGenerators/i-level-generator";
+import { ILevelGenerator } from "./dungeonGenerators/model/i-level-generator";
 import { ILevelShell } from "./model/i-level-shell";
 import LevelState from "./model/level-state";
 

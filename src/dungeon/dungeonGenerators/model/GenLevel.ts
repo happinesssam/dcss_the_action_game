@@ -1,8 +1,12 @@
 import { ITinyPoint } from "../../../global/model/i-tiny-point";
 import { ILevelShell } from "../../model/i-level-shell";
 import LevelState from "../../model/level-state";
+import { IGenLevel } from "./i-gen-level";
 
-export class GenLevel{
+/**
+ * class to be used by the level generator when creating levels
+ */
+export class GenLevel implements IGenLevel{
     public levelShell:ILevelShell;
     public levelState:LevelState;
 
@@ -23,7 +27,8 @@ export class GenLevel{
         this.levelState.height = height;
         this.walls = [];
         this.emptyTiles = [];
-        let length:number = width * height;
+        const length:number = width * height;
+        //So the default is everything is walls
         for(let i:number = 0;i<length;i++){
             this.walls[i] = 1;
         }

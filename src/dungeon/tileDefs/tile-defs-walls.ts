@@ -1,4 +1,4 @@
-import { DestructType, IFeatureTile, ReflectType } from "../dataStructure/tile-def-interfaces";
+import { DestructType, IFeatureTile, ReflectType } from "../model/tile-def-interfaces";
 
 export class TileDefsWalls{
     public static BARS_RED:string = "bars_red";
