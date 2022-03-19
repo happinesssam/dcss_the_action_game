@@ -1,6 +1,6 @@
 import { ILevelShell } from "../model/i-level-shell";
 import { ArenaGenerator } from "./arena-generator";
-import { ILevelGenerator } from "./i-level-generator";
+import { ILevelGenerator } from "./model/i-level-generator";
 
 export class DungeonGenerators{
 
@@ -17,4 +17,4 @@ export class DungeonGenerators{
     public debug(message:string):void{
         console.log("message from gen worker:", message);
     }
-}
+}//Not used!

@@ -1,6 +1,6 @@
-import { ITheme } from "../dataStructure/i-theme";
 import { TileDefsWalls } from "../tileDefs/tile-defs-walls";
 import { TileDefsFloor } from "../tileDefs/tile-defs-floor";
+import { ITheme } from "../model/i-theme";
 
 export class DungeonThemes{
     private static _themes:ITheme[];

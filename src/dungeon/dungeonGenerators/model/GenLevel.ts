@@ -1,15 +1,22 @@
 import { ITinyPoint } from "../../../global/model/i-tiny-point";
 import { ILevelShell } from "../../model/i-level-shell";
 import LevelState from "../../model/level-state";
+import { Stairs } from "../../stairs";
 
+/**
+ * A level helper class used exclusively by level generator - lots of functions and extra vars
+ */
 export class GenLevel{
     public levelShell:ILevelShell;
     public levelState:LevelState;
+    public scenery:Stairs;
 
     public walls?:number[];
     public dontDecorate?:boolean[];//tiles that shouldn't be touched by the decorator
     public emptyTiles:number[];
     public randomGen:Phaser.Math.RandomDataGenerator;
+    public width:number;
+    public height:number;
 
 
     constructor(levelShell:ILevelShell, levelState:LevelState, randomGen:Phaser.Math.RandomDataGenerator){
@@ -19,8 +26,8 @@ export class GenLevel{
     }
 
     public setDimensions(width:number, height:number):void{
-        this.levelState.width = width;
-        this.levelState.height = height;
+        this.levelState.width = this.width = width;
+        this.levelState.height = this.height = height;
         this.walls = [];
         this.emptyTiles = [];
         let length:number = width * height;
@@ -53,10 +60,10 @@ export class GenLevel{
     }
 
     protected getIndex(x:number, y:number):number{
-        return x + y * this.levelState.width;
+        return x + y * this.width;
     }
 
     protected getPoint(index:number):ITinyPoint{
-        return {x: index%this.levelState.width, y:Math.floor(index / this.levelState.width)};//should I pool this?
+        return {x: index%this.width, y:Math.floor(index / this.width)};//should I pool this?
     }
 }

@@ -1,4 +1,4 @@
-import { FloorType, IFloorTile } from "./dataStructure/tile-def-interfaces";
+import { FloorType, IFloorTile } from "./model/tile-def-interfaces";
 
 export class TileDefs{
     public static floorDefs:IFloorTile[] = [

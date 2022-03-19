@@ -1,3 +1,6 @@
+/**
+ * This is the structure for a tile in a theme to be used by generator, rather than to be used in actual game
+ */
 export interface ITile{
     id:string;
     texture:string;

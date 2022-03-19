@@ -1,6 +1,8 @@
-import Entity from "../model/entity";
+import { Feature } from "./feature";
 
-export class Stairs extends Entity{
+export class Stairs extends Feature{
     public connectsToStairs:string;
-    public connectsToLevel:string
+    public connectsToLevel:string;
+    public goesUp:string;
+    public theme:string;
 }

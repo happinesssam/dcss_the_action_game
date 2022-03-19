@@ -1,17 +1,14 @@
 import Character from "../../actors/model/character";
 import Item from "../../items/model/item";
 import { Feature } from "../feature";
+import { ILevelTile } from "./i-level-tile";
 
 export default class LevelState{
     public id:string;
     public depth:number;
     public branch:string;
 
-    public ground:number[];
-    public walls:boolean[];
-    public scenery:Feature[];//walls are scenery with stats. Only visible walls counted
-    public decorations:number[];
-    public seen:boolean[];
+    public tiles:ILevelTile[];
 
     public width:number;
     public height:number;
@@ -19,4 +16,4 @@ export default class LevelState{
     public items:Item[];
 
     public actors:Character[];
-}
+}//This is designed to be the data saved, so should be minimal 
