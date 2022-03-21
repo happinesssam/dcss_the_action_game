@@ -15,7 +15,7 @@ export class DungeonLevelDisplay{
     }
 
     public initLevel(levelState:LevelState):void{
-        
+        //this.tiles.createFromTiles([]);
     }
 
     public updateTiles():void{

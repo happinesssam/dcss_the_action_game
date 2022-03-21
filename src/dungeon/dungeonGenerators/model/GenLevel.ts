@@ -1,4 +1,5 @@
 import { ITinyPoint } from "../../../global/model/i-tiny-point";
+import { Feature } from "../../feature";
 import { ILevelShell } from "../../model/i-level-shell";
 import LevelState from "../../model/level-state";
 import { Stairs } from "../../stairs";
@@ -9,7 +10,7 @@ import { Stairs } from "../../stairs";
 export class GenLevel{
     public levelShell:ILevelShell;
     public levelState:LevelState;
-    public scenery:Stairs;
+    public features:Feature[];
 
     public walls?:number[];
     public dontDecorate?:boolean[];//tiles that shouldn't be touched by the decorator
@@ -30,7 +31,8 @@ export class GenLevel{
         this.levelState.height = this.height = height;
         this.walls = [];
         this.emptyTiles = [];
-        let length:number = width * height;
+        const length:number = width * height;
+        //So the default is everything is walls
         for(let i:number = 0;i<length;i++){
             this.walls[i] = 1;
         }

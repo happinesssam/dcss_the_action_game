@@ -1,5 +1,5 @@
-import Entity from "../model/entity";
+import { Feature } from "./feature";
 
-export class Door extends Entity{
+export class Door extends Feature{
     public open:boolean;
 }

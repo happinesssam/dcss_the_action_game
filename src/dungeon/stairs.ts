@@ -1,8 +1,6 @@
 import { Feature } from "./feature";
+import { IStairsShell } from "./model/i-level-shell";
 
 export class Stairs extends Feature{
-    public connectsToStairs:string;
-    public connectsToLevel:string;
-    public goesUp:string;
-    public theme:string;
+    public stairsInfo:IStairsShell;
 }
