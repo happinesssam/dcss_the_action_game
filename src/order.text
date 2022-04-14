@@ -3,3 +3,31 @@ I'm getting mixed up by my own code...
 Some explanation for future me. I think I have made the mistake of having everything on on level, confusing me. Maybe 
 Folders:
 - mobs will just be monster definitions
+- ditto themes
+So maybe I need a folder for data... I think that would make more sense. Move all the stuff which is jsut me stealing/converting the regular dcss data into that.
+It's still a fucking mess.
+
+So:
+Ideal folder structure:
+- scenes: the Phaser scenes for different places
+- dungeon: classes to do with the building and structure of the dungeon
+- engine: classes that actually make things work. Should this just be tightly bound with other elements?
+- view: the classes that display the game
+    - ui: ui display elements
+    - game: game display elements
+- global: classes used in different areas
+
+Or...
+- game: All game related classes
+    - model: The data structures for all game related stuff
+        - dungeon
+        - actors
+        - global
+    - view: The game's view
+    - engine: The engine
+        - dungeon generator
+        - game engine
+    - data: all the data creation/parsing stuff
+- app: The non game related stuff
+    - scenes: Phaser scenes:
+    - ui: app ui
