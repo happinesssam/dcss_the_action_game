@@ -13,4 +13,6 @@ export default class GameState{
      public levels:Map<string, LevelState> = new Map<string, LevelState>();
      public player:Player;
      public seed:number;
+     public gameVersion:string;
+     public startDate:Date;
 } 

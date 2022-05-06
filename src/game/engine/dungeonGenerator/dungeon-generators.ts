@@ -1,6 +1,6 @@
-import { ILevelShell } from "../model/i-level-shell";
+import { ILevelShell } from "../../model/dungeon/i-level-shell";
+import { ILevelGenerator } from "../../model/dungeonGenerator/i-level-generator";
 import { ArenaGenerator } from "./arena-generator";
-import { ILevelGenerator } from "./model/i-level-generator";
 
 export class DungeonGenerators{
 

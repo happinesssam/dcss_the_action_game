@@ -8,6 +8,6 @@ export interface ICharItemSlots{
      gloves?:Item;
      boots?:Item;
      cloak?:Item;
-     leftRing?:Item;
-     rightRing?:Item;
+     rings?:Item[];
+     amulet?:Item;
 }

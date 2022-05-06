@@ -1,5 +1,5 @@
 // @ts-ignore
-import DungeonGenWorker from "web-worker:./dungeonGenerators/dungeon-gen-worker.ts";
+//import DungeonGenWorker from "web-worker:./dungeonGenerators/dungeon-gen-worker.ts";
 import { ILevelShell } from "../../model/dungeon/i-level-shell";
 import LevelState from "../../model/level-state";
 
@@ -24,11 +24,11 @@ export class DungeonGenerator{
     public getDungeonLevel(levelShell:ILevelShell, callback:(level:LevelState)=>void):LevelState{
         let level:LevelState;
 
-        const dungeonGenerators = new DungeonGenWorker();
+        // const dungeonGenerators = new DungeonGenWorker();
 
-        dungeonGenerators.postMessage({type: 'init', args: 'web worker'});
+        // dungeonGenerators.postMessage({type: 'init', args: 'web worker'});
 
-        dungeonGenerators.postMessage({type: 'exec', func:'createLevel', args: {levelShell:levelShell, callback:callback} as IDungeonGenArgs});
+        // dungeonGenerators.postMessage({type: 'exec', func:'createLevel', args: {levelShell:levelShell, callback:callback} as IDungeonGenArgs});
 
         return null;
     }
