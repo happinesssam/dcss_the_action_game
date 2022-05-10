@@ -1,4 +1,4 @@
-import { ITinyPoint } from "../utils/i-tiny-point";
+import { ITinyPoint } from "../../../global/i-tiny-point";
 import { Feature } from "../dungeon/feature";
 import LevelState from "../level-state";
 import { ILevelShell } from "../dungeon/i-level-shell";

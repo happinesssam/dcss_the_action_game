@@ -1,6 +1,6 @@
-import { ITinyPoint } from "../../../game/model/utils/i-tiny-point";
-import { ILevelShell } from "../../model/i-level-shell";
+import { ITinyPoint } from "../../../global/i-tiny-point";
 import LevelState from "../../model/level-state";
+import { ILevelShell } from "../dungeon/i-level-shell";
 
 export interface IGenLevel{
     levelShell:ILevelShell;

@@ -1,8 +1,8 @@
-import { AssetNames } from "../../../game/data/dungeon/names";
 import { TextStyles } from "../text/text-styles";
-import { PointerEvents } from "./pointer-events";
+import { ImageButton } from "./image-button";
+import { ITextButtonConfig, ITextButtonState } from "./misc/i-text-button-config";
 
-export class TextButton extends Phaser.GameObjects.Group{
+export class TextButton extends ImageButton{
     protected textField: Phaser.GameObjects.Text;
     protected button: Phaser.GameObjects.Image;
     protected down:boolean = false;
@@ -14,125 +14,69 @@ export class TextButton extends Phaser.GameObjects.Group{
     protected overUpTexture: string;
     protected overDownTexture: string;
 
-    constructor(scene:Phaser.Scene, config:ITextButtonConfig){
-        super(scene);
-
-        this.atlas = config.atlas || AssetNames.UI_ASSETS;//yes, all state need to be on same atlas
-
-        this.upTexture = config.upState || "buttonLong_beige.png";
-        this.overUpTexture = config.overUpState || "";
-        this.downTexture = config.downState || "buttonLong_beige_pressed.png";
-        this.overDownTexture = config.overDownState || "";
-
-        this.button = scene.add.image(0, 0, this.atlas, this.upTexture);
-        this.add(this.button);
-
-        let copy:string =  config.copy || "text";
+    constructor(scene:Phaser.Scene, config:ITextButtonConfig, copy:string = "", x: number = 0, y:number = 0){
+        super(scene, config, x, y);
 
         this.textField = scene.add.text(0, 0, copy, TextStyles.getStyle(config.textStyle));
 
-        this.add(this.textField);
-
-        this.setXY(100, 100);
-
-        this.addListeners();
-        this.button.setInteractive();
-    }
-//TODO farm all this stuff out onto an abstract button class
-    protected addListeners():void{
-        this.button.on(PointerEvents.OVER, this.onOver.bind(this));
-        this.button.on(PointerEvents.OUT, this.onOut.bind(this));
-        this.button.on(PointerEvents.DOWN, this.onDown.bind(this));
-        this.button.on(PointerEvents.UP, this.onUp.bind(this));
-        this.button.on(PointerEvents.UP_OUTSIDE, this.onUpOutside.bind(this));
+        this.add(this.textField);  
+        
+        this.applyStateChange();
     }
 
-    protected checkState(): void{
-        const newState:number = (this.down ? 1 : 0) + (this.over ? 2 : 0);//binary
-        if(newState!=this.buttonState){
-            switch(newState){
-                case 0://up, not over
-                this.displayOutUp();
-                    break;
-                case 1://down, not over
-                this.displayOutDown();
-                    break;
-                case 2://over, up
-                this.displayOverUp();
-                    break;
-                case 3://over down
-                this.displayOverDown();
-                    break;
+    protected get textConfig(): ITextButtonConfig{
+        return this.config as ITextButtonConfig;
+    }
+
+    protected get textState(): ITextButtonState{
+        return this.currentState as ITextButtonState;
+    }
+
+    public setText(copy:string):void{
+        this.textField.text = copy;
+    }
+
+    protected applyStateChange():void{
+        super.applyStateChange();
+        this.placeTextCenterH(this.textConfig.textAlignOffset.x);
+        this.placeTextCenterV(this.textConfig.textAlignOffset.y);
+        if(this.textConfig.textAlign){
+            if(this.textConfig.textAlign.indexOf("T")!=-1){
+                this.placeTextTop(this.textConfig.textAlignOffset.y);
+            }else if(this.textConfig.textAlign.indexOf("B")!=-1){
+                this.placeTextBottom(this.textConfig.textAlignOffset.y);
             }
-            this.buttonState = newState;
-        }       
-    }
-
-    protected onOver(event:Event):void{
-        this.over = true;
-        this.checkState();
-    }
-
-    protected onOut(event:Event):void{
-        this.over = false;
-        this.checkState();
-    }
-
-    protected onDown(event:Event):void{
-        this.down = true;
-        this.checkState();
-    }
-    
-    protected onUp(event:Event):void{
-        this.down = false;
-        this.checkState();
-    }
-    
-    protected onUpOutside(event:Event):void{
-        this.down = this.over = false;
-        this.checkState();
-    }
-    
-    protected displayOverUp(): void{
-        if(this.overUpTexture?.length){
-            this.button.setFrame( this.overUpTexture, true);
-        }else{
-            this.displayOutUp();
+            if(this.textConfig.textAlign.indexOf("L")!=-1){
+                this.placeTextLeft(this.textConfig.textAlignOffset.x);
+            }else if(this.textConfig.textAlign.indexOf("R")!=-1){
+                this.placeTextRight(this.textConfig.textAlignOffset.x);
+            }
         }
-    }
-    
-    protected displayOverDown():void{
-        if(this.overDownTexture?.length){
-            this.button.setFrame( this.overUpTexture, true);
-        }else{
-            this.displayOutDown();
-        }
+        this.textField.x+=this.textState.textOffset?.x || 0;
+        this.textField.y+=this.textState.textOffset?.y || 0;
     }
 
-    protected displayOutDown():void{
-        if(this.downTexture?.length){
-            this.button.setFrame( this.downTexture, true);
-        }else{
-            this.displayOutUp();
-        }
+    protected placeTextLeft(offsetX:number = 0):void{
+        this.textField.x = offsetX;
     }
 
-    protected displayOutUp(): void{
-        this.button.setFrame( this.upTexture, true);
+    protected placeTextRight(offsetX:number = 0):void{
+        this.textField.x = this.width - this.textField.width - offsetX;
     }
-}
-export interface ITextButtonConfig{
-    x?:number;
-    y?:number;
-    copy?:string;
-    atlas?:string;
-    upState?:string;
-    downState?:string;
-    overUpState?:string;
-    overDownState?:string;
-    textStyle?:string;
-    textStyleOver?:string;
-    downTextOffset?:number;
-    width?:number;
-    height?:number;
+
+    protected placeTextCenterH(offsetX:number = 0): void{
+        this.textField.x = (this.width - this.textField.width) / 2 + offsetX;
+    }
+
+    protected placeTextTop(offsetY:number = 0):void{
+        this.textField.y = offsetY;
+    }
+
+    protected placeTextBottom(offsetY:number = 0):void{
+        this.textField.y = this.height - this.textField.height - offsetY;
+    }
+
+    protected placeTextCenterV(offsetY:number = 0): void{
+        this.textField.y = (this.height - this.textField.height) / 2 + offsetY;
+    }
 }

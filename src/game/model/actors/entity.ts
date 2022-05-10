@@ -1,4 +1,4 @@
-import {ITinyPoint} from '../utils/i-tiny-point';
+import {ITinyPoint} from '../../../global/i-tiny-point';
 export default class Entity{
     public position:ITinyPoint;
     public id:string;

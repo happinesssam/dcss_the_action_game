@@ -1,4 +1,4 @@
-import { ITinyPoint } from "../../model/utils/i-tiny-point";
+import { ITinyPoint } from "../../../global/i-tiny-point";
 import { IDungeonGenArgs } from "./dungeon-generator";
 import LevelState from "../../model/level-state";
 import { GenLevel } from "../../model/dungeonGenerator/gen-level";
