@@ -1,5 +1,5 @@
-import Character from "../game/model/actors/character";
-import Item from "../game/model/actors/item";
+import Character from "../../model/actors/character";
+import Item from "../../model/actors/item";
 
 export default class ItemHelper{
 

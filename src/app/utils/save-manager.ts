@@ -5,6 +5,10 @@ export class SaveManager{
     private static GAME_SAVE:string = "dccsAGameSave";
     private static APP_STATE:string = "appState";
 
+    public static deleteData(): void{
+
+    }
+
     public static loadAppState(): AppState{
         let save = JSON.parse(localStorage.getItem(SaveManager.APP_STATE));
 
@@ -16,7 +20,7 @@ export class SaveManager{
     }
 
     private static parseAppSave(rawSave): AppState{
-        return new AppState();
+        return null;
     }
 
     public static loadGame(): GameState{
@@ -31,6 +35,6 @@ export class SaveManager{
     }
 
     protected static parseGameSave(rawSave) :  GameState{
-        return new GameState();
+        return null;
     }
 }

@@ -2,10 +2,11 @@ import { DungeonGenerator } from "../../game/engine/dungeonGenerator/dungeon-gen
 import LevelState from "../../game/model/level-state";
 import { GameInfo } from "../data/game-info";
 import GameState from "../../game/model/game-state";
-import { BranchNames, SceneNames } from "../../game/data/dungeon/names";
+import { BranchNames} from "../../game/data/dungeon/names";
 import { GameValues } from "../../game/view/values";
 import { DungeonLevelDisplay } from "../../game/view/dungeon-level-display";
 import { ILevelShell } from "../../game/model/dungeon/i-level-shell";
+import { SceneNames } from "./scene-names";
 
 export default class GameScene extends Phaser.Scene{
     protected dungeonDisplay:DungeonLevelDisplay;

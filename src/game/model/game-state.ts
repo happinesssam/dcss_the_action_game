@@ -12,6 +12,8 @@ export default class GameState{
       */
      public levels:Map<string, LevelState> = new Map<string, LevelState>();
      public player:Player;
+     public currentBranch:string;
+     public currentLevel:number;
      public seed:number;
      public gameVersion:string;
      public startDate:Date;

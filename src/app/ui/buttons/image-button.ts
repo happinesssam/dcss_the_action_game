@@ -1,7 +1,8 @@
+import { ButtonEvents } from "./misc/button-events";
 import { IImageButtonConfig, IImageButtonState } from "./misc/i-image-button-config";
 import { PointerEvents } from "./misc/pointer-events";
 
-export class ImageButton extends Phaser.GameObjects.Group{
+export class ImageButton extends Phaser.GameObjects.Container{
     protected button: Phaser.GameObjects.Image;
     protected down:boolean = false;
     protected over:boolean = false;
@@ -20,9 +21,12 @@ export class ImageButton extends Phaser.GameObjects.Group{
         this.button.setOrigin(0, 0);
         this.add(this.button);
 
-        this.setXY(x, y);
+        this.x = x;
+        this.y = y;
 
         this.addListeners();
+
+        this.scene.add.existing(this);
     }
 
     public set buttonActive(value:boolean){
@@ -41,11 +45,11 @@ export class ImageButton extends Phaser.GameObjects.Group{
         return this._buttonActive;
     }
 
-    public get width(): number{
+    public get buttonWidth(): number{
         return this.config.width ? this.config.width : this.button.width;
     }
 
-    public get height(): number{
+    public get buttonHeight(): number{
         return this.config.height ? this.config.height : this.button.height;
     }
 
@@ -60,26 +64,31 @@ export class ImageButton extends Phaser.GameObjects.Group{
     protected onOver(event:Event):void{
         this.over = true;
         this.checkState();
+        this.emit(ButtonEvents.OVER, this);
     }
 
     protected onOut(event:Event):void{
         this.over = false;
         this.checkState();
+        this.emit(ButtonEvents.OUT, this);
     }
 
     protected onDown(event:Event):void{
         this.down = true;
         this.checkState();
+        this.emit(ButtonEvents.DOWN, this);
     }
     
     protected onUp(event:Event):void{
         this.down = false;
         this.checkState();
+        this.emit(ButtonEvents.UP, this);
     }
     
     protected onUpOutside(event:Event):void{
         this.down = this.over = false;
         this.checkState();
+        this.emit(ButtonEvents.UP_OUTSIDE, this);
     }
 
     protected checkState(): void{

@@ -61,11 +61,11 @@ export class TextButton extends ImageButton{
     }
 
     protected placeTextRight(offsetX:number = 0):void{
-        this.textField.x = this.width - this.textField.width - offsetX;
+        this.textField.x = this.buttonWidth - this.textField.width - offsetX;
     }
 
     protected placeTextCenterH(offsetX:number = 0): void{
-        this.textField.x = (this.width - this.textField.width) / 2 + offsetX;
+        this.textField.x = (this.buttonWidth - this.textField.width) / 2 + offsetX;
     }
 
     protected placeTextTop(offsetY:number = 0):void{
@@ -73,10 +73,10 @@ export class TextButton extends ImageButton{
     }
 
     protected placeTextBottom(offsetY:number = 0):void{
-        this.textField.y = this.height - this.textField.height - offsetY;
+        this.textField.y = this.buttonHeight - this.textField.height - offsetY;
     }
 
     protected placeTextCenterV(offsetY:number = 0): void{
-        this.textField.y = (this.height - this.textField.height) / 2 + offsetY;
+        this.textField.y = (this.buttonHeight - this.textField.height) / 2 + offsetY;
     }
 }
