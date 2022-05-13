@@ -1,7 +1,6 @@
 import "phaser";
-import { TileDefsWallsAbyss } from "../../game/data/dungeon/tileDefs/tile-defs-walls-abyss";
-import { AssetNames} from "../../game/data/dungeon/names";
 import { DungeonTileHelper } from "../../game/view/dungeon-tile-helper";
+import { AssetNames } from "../../global/asset-names";
 import { SceneNames } from "./scene-names";
 export default class PreloadScene extends Phaser.Scene{
 
@@ -12,7 +11,11 @@ export default class PreloadScene extends Phaser.Scene{
     public preload():void{
         //loading this as json as well as with spritesheet to make it easier to access json
         this.load.json({
-            key: 'dungeonTiles',
+            key: AssetNames.SPECIES_DATA,
+            url: 'assets/data/species.json'
+        });
+        this.load.json({
+            key: AssetNames.DUNGEON_TILES,
             url: 'assets/tiles/dungeon.json'
         });
         this.load.atlas({
@@ -29,7 +32,6 @@ export default class PreloadScene extends Phaser.Scene{
 
     public create():void{
         console.log("PRELOAD SCENE");
-        //console.log(TileDefsWallsAbyss.wallsDef, this.game.cache);
         DungeonTileHelper.getInstance().initTiles(this.cache);
         this.scene.start(SceneNames.MAIN_MENU_SCENE);
     }

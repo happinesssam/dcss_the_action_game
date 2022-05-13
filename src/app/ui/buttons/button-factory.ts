@@ -1,4 +1,4 @@
-import { AssetNames } from "../../../game/data/dungeon/names";
+import { AssetNames } from "../../../global/asset-names";
 import { Buttons } from "./misc/buttons";
 import { IImageButtonConfig, IImageButtonState } from "./misc/i-image-button-config";
 import { ITextButtonConfig } from "./misc/i-text-button-config";
@@ -65,11 +65,3 @@ enum ButtonType{
     image,
     text
 }
-/*
- this.atlas = config.atlas || AssetNames.UI_ASSETS;//yes, all state need to be on same atlas
-
-        this.upTexture = config.upState || "buttonLong_beige.png";
-        this.overUpTexture = config.overUpState || "";
-        this.downTexture = config.downState || "buttonLong_beige_pressed.png";
-        this.overDownTexture = config.overDownState || "";
-        */

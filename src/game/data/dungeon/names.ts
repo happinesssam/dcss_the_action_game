@@ -1,7 +1,3 @@
-export class AssetNames{
-    public static readonly DUNGEON_TILES:string = "dungeonTiles";
-    public static readonly UI_ASSETS:string = "uiAssets";
-}
 export class BranchNames{
     public static readonly ENTRANCE:string = "entrance";
     public static readonly DUNGEON:string = "dungeon";
