@@ -7,6 +7,7 @@ export class ImageButton extends Phaser.GameObjects.Container{
     protected down:boolean = false;
     protected over:boolean = false;
     protected buttonState:number = -1;
+    protected _selected:boolean = false;
     protected _buttonActive:boolean;
     protected config:IImageButtonConfig;
     protected currentState:IImageButtonState;
@@ -51,6 +52,17 @@ export class ImageButton extends Phaser.GameObjects.Container{
 
     public get buttonHeight(): number{
         return this.config.height ? this.config.height : this.button.height;
+    }
+
+    public get selected():boolean{
+        return this._selected;
+    }
+
+    public set selected(value:boolean){
+        if(value!=this._selected){
+            this._selected = value;
+            this.checkState();
+        }
     }
 
     protected addListeners():void{

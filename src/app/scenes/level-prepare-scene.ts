@@ -8,4 +8,10 @@ export default class LevelPrepareScene extends Phaser.Scene{
     constructor(){
         super(SceneNames.LEVEL_PREPARE_SCENE);
     }
+
+    public create():void{
+        //add a spinner or something
+
+        
+    }
 }
