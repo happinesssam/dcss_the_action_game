@@ -1,5 +1,5 @@
+import { AssetNames } from "../../global/asset-names";
 import LevelState from "../model/level-state";
-import { AssetNames } from "../data/dungeon/names";
 import { GameValues } from "./values";
 
 export class DungeonLevelDisplay{

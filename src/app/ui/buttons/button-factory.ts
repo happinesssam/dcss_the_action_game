@@ -20,7 +20,7 @@ export class ButtonFactory{
         }
     }
 
-    public static getConfig(buttonId:string) : IImageButtonConfig{
+    public static getConfig(buttonId:string) : ITextButtonConfig{
         this.init();
         if(this.buttons.has(buttonId)){
             return this.buttons.get(buttonId).config
@@ -49,9 +49,23 @@ export class ButtonFactory{
             },
             textAlignOffset:{x: 0, y:-3}
         } as ITextButtonConfig);
+
+        this.addConfig(Buttons.SPECIES_BUTTON, ButtonType.text, {
+            atlas:AssetNames.UI_ASSETS,
+            upState:{
+                texture: "buttonLong_beige.png"
+            },
+            downState:{
+                texture: "buttonLong_beige_pressed.png",
+                offset:{x:0, y:5},
+                textOffset:{x:0, y:5}
+            },
+            textAlign:"LC",
+            textAlignOffset:{x: 10, y:-3}
+        } as ITextButtonConfig);
     }
 
-    public static addConfig(id:string, type:ButtonType, config:IImageButtonConfig): void{
+    public static addConfig(id:string, type:ButtonType, config:ITextButtonConfig): void{
         this.init();
         this.buttons.set(id, {id:id, type:type, config:config});
     }
@@ -59,7 +73,7 @@ export class ButtonFactory{
 interface IButtonScaffold{
     id:string;
     type:ButtonType;
-    config:IImageButtonConfig;
+    config:ITextButtonConfig;
 }
 enum ButtonType{
     image,

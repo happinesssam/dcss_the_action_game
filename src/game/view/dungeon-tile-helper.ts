@@ -1,4 +1,4 @@
-import { AssetNames } from "../data/dungeon/names";
+import { AssetNames } from "../../global/asset-names";
 
 /**
  * phaser tilemap simply uses frame indexes, so I need a more readable way of mapping the frame index to the frame in the sprite atlas.

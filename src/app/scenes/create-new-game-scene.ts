@@ -1,6 +1,7 @@
 import { GameCreator, IGameOptions } from "../../game/engine/setup/game-creator";
 import GameState from "../../game/model/game-state";
 import { GameInfo } from "../data/game-info";
+import { ChooseSpeciesPanel } from "../ui/createNewGameElements/choose-species-panel";
 import { SaveManager } from "../utils/save-manager";
 import { SceneNames } from "./scene-names";
 
@@ -9,6 +10,7 @@ import { SceneNames } from "./scene-names";
  */
 export default class CreateNewGameScene extends Phaser.Scene{
     private gameOptions:IGameOptions;
+    private chooseSpeciesPanel:ChooseSpeciesPanel;
 
     constructor(){
         super(SceneNames.CREATE_NEW_GAME_SCENE);
@@ -21,7 +23,9 @@ export default class CreateNewGameScene extends Phaser.Scene{
     }
 
     protected showChooseSpecies():void{
-        this.showChooseJob();
+        this.chooseSpeciesPanel = new ChooseSpeciesPanel(this.scene.scene);
+        this.add.existing(this.chooseSpeciesPanel);
+       // this.showChooseJob();
     }
 
     protected showChooseJob(): void{
