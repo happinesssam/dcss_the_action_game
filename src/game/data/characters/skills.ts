@@ -21,6 +21,9 @@ export class Skills{
     public static readonly POISON_MAGIC:string = "poison_magic";
     public static readonly INVOCATIONS:string = "invocations";
     public static readonly EVOCATIONS:string = "evocations";
+    public static readonly SPELLCASTING:string = "spellcasting";
+    public static readonly STEALTH:string = "stealth";
+    public static readonly WEAPON:string = "weapon";//for char creation, maps to weapon chosed
 
     public static readonly XP:string = "xp";
     public static readonly HP:string = "hp";
