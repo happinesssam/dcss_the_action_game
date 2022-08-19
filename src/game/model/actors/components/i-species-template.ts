@@ -1,5 +1,5 @@
 export interface ISpeciesTemplate{
-    enum:string,
+    id:string,
     monster?:string,
     name:string,
     adjective:string,
@@ -9,9 +9,7 @@ export interface ISpeciesTemplate{
     species_flags:string[],
     aptitudes:{},//Map<string, number>,
     can_swim:boolean,
-    str:number,
-    int:number,
-    dex:number,
+    stats:number[],
     levelup_stat_frequency:number,
     mutations:{},//Map<number, Map<string, number>>,
     recommended_jobs:string[]

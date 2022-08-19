@@ -1,4 +1,4 @@
-export enum MosterClassFlags{
+export enum MonsterClassFlags{
     M_NO_FLAGS,
 
     /// monster eats doors
